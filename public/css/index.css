@@ -1,0 +1,23 @@
+body {
+  font-family: "Lato", sans-serif;
+}
+.hide{ display: none; }
+.title-home{ font-weight: bold; color: blanchedalmond; }
+.pesquisa-nome{ font-weight: bold; }
+.header{ background-image: linear-gradient(to right, black , gray); }
+#icon-search{ color: #fff; }
+#name-icon{ font-weight: bold; color:#fff; font-size: 16px; }
+#btn-icon{ height: 100px; width: 100%; }
+.row-title-pesquisa{ margin-top: 50px; }
+#btn-etapas{ border: solid 2px #ffed4a ; height: 100px; width: 150px; margin: 0 auto; display: block; }
+#btn-etapas-checklist{ border: solid 2px #ffed4a ; height: 100px; width: 300px; margin: 0 auto; display: block }
+.sidenav {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+.sidenav a { padding: 20px; text-decoration: none; font-size: 14px; color: #818181; display: block; }
+.sidenav a:hover { color: #010101; }
+.main { margin-left: 200px; }
