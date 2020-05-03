@@ -11,200 +11,352 @@
 
 @section('content')
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-12">
-            <div class="card">
-                <div class="card-header d-flex justify-content-center header">
-                    <h1 class="title-home">Projetos Painel</h1>
-                </div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-    
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <a href="/painel/projetos">
-                                    <button type="button" id="btn-icon" class="btn btn-warning">
-                                    <i id="icon-home" class="fa fa-list-alt" aria-hidden="true"></i> <br> <br>
-                                        <span id="name-icon">PROJETOS A</span>
-                                    </button>
-                                </a>          
-                            </div>
-                            <div class="col-md-3">
-                                <a href="/painel/projetos">
-                                    <button type="button" id="btn-icon" class="btn btn-warning">
-                                    <i id="icon-home" class="fa fa-list-alt" aria-hidden="true"></i> <br> <br>
-                                        <span id="name-icon">PROJETOS B</span>
-                                    </button>
-                                </a>          
-                            </div>
-                            <div class="col-md-3">
-                                <a href="/painel/projetos">
-                                    <button type="button" id="btn-icon" class="btn btn-warning">
-                                    <i id="icon-home" class="fa fa-list-alt" aria-hidden="true"></i> <br> <br>
-                                        <span id="name-icon">PROJETOS C</span>
-                                    </button>
-                                </a>          
-                            </div>
-                            <div class="col-md-3">
-                                <a href="/painel/projetos">
-                                    <button type="button" id="btn-icon" class="btn btn-warning">
-                                    <i id="icon-home" class="fa fa-list-alt" aria-hidden="true"></i> <br> <br>
-                                        <span id="name-icon">PROJETOS D</span>
-                                    </button>
-                                </a>          
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pesquisas -->
-                    <div class="container">
-                        <div class="row row-title-pesquisa justify-content-center">
-                            <h4 class="pesquisa-nome">Procure projetos por:</h4>
-                        </div>
-                        <div class="row row-pesquisa">
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Nome do membro">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-warning" type="button">
-                                            <i class="fa fa-search" id="icon-search"></i>
-                                        </button>
-                                    </div>
-                                </div>         
-                            </div>
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Nome da equipe">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-warning" type="button">
-                                            <i class="fa fa-search" id="icon-search"></i>
-                                        </button>
-                                    </div>
-                                </div>         
-                            </div>
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Estado ou Cidade">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-warning" type="button">
-                                            <i class="fa fa-search" id="icon-search"></i>
-                                        </button>
-                                    </div>
-                                </div>         
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Etapas -->
-                    <div class="container">
-                        <div class="row row-etapas">
-                            <div class="col-md-4">
-                                <button type="button" id="btn-etapas-checklist" class="btn btn-light">
-                                    <i class="fa fa-star"></i> <br>
-                                    <span>CHECKLIST</span>
-                                </button>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" id="btn-etapas" class="btn btn-light">
-                                    <i class="fa fa-star"></i> <br>
-                                    <span>LEV. REQUISITOS</span>
-                                </button>                                      
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" id="btn-etapas" class="btn btn-light">
-                                    <i class="fa fa-star"></i> <br>
-                                    <span>PROJETO</span>
-                                </button>        
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" id="btn-etapas" class="btn btn-light ">
-                                    <i class="fa fa-star"></i> <br>
-                                    <span>IMPLEMENTAÇÃO</span>
-                                </button>         
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" id="btn-etapas" class="btn btn-light">
-                                    <i class="fa fa-star"></i> <br>
-                                    <span>TESTE</span>
-                                </button>      
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Detalhes da etapa e Salvar a data de previsão de término -->
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header d-flex justify-content-center">
-                                        <h4>Projetos A Visão 3</h4>
-                                    </div>
-
-                                    <div class="card-body">
-                                        @if (session('status'))
-                                            <div class="alert alert-success" role="alert">
-                                                {{ session('status') }}
-                                            </div>
-                                        @endif
-                        
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div type="button" style="width:100%;" class="btn btn-warning">
-                                                        <i id="icon-home" class="fa fa-list-alt" aria-hidden="true"></i> <br> <br>
-                                                        <span id="name-icon">PROJETOS A</span>
-                                                    </div>
-                                                </div>
-                                            </div>    
-                                        </div>    
-                                    </div>    
-                                </div>    
-                            </div>    
-                        </div>    
-                    </div>
-                    
-                    <!-- Detalhes da etapa e Salvar a data de previsão de término -->
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header d-flex justify-content-center">
-                                        <h4>Projetos A Visão 4</h4>
-                                    </div>
-
-                                    <div class="card-body">
-                                        @if (session('status'))
-                                            <div class="alert alert-success" role="alert">
-                                                {{ session('status') }}
-                                            </div>
-                                        @endif
-                        
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div type="button" style="width:100%;" class="btn btn-warning">
-                                                        <i id="icon-home" class="fa fa-list-alt" aria-hidden="true"></i> <br> <br>
-                                                        <span id="name-icon">PROJETOS A</span>
-                                                    </div>
-                                                </div>
-                                            </div>    
-                                        </div>    
-                                    </div>    
-                                </div>    
-                            </div>    
-                        </div>    
-                    </div>
-
-                    
-                </div>
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-md-2 d-flex justify-content-center">
+      <div class="header d-flex justify-content-center">
+        <button type="button" class="btn btn-success" id="btn-time" onclick="listarAgendamento()">
+          <i class="fa fa-clock-o fa-2x" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn btn-success" id="btn-plus" onclick="cadastrarObjeto()">
+          <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+        </button>
+      </div>  
     </div>
+    <div class="col-md-10 d-flex justify-content-center">
+      <div class="header d-flex justify-content-center">
+        <img class="achados-perdidos-img" src="{{url('img/achados-admin.png')}}" alt="achados e perdidos admin">
+        <h1 class="achados-perdidos-title">ACHADOS E PERDIDOS ADMIN</h1>
+      </div>  
+    </div>
+  </div>
+  <div class="row icones">
+    <!--
+      Trecho que insere os ícones com as project
+    -->
+  </div>
+
+  <div class="row row-pesquisa">
+    <div class="col-md-4">
+      <div class="todo-pesquisa d-flex justify-content-center">
+        <input type="text" class="input-filtro" placeholder="Nome" id="nome" name="nome" required>
+        <button class="button-filtro" type="submit" id="btn-filter-nome" onclick="getNome()">
+          <img class="img-button-filtro" src="{{url('img/icones/question-1.png')}}">
+        </button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="todo-pesquisa d-flex justify-content-center">
+        <input type="text" class="input-filtro" placeholder="Descrição" id="descricao" name="descricao" required>
+        <button class="button-filtro" type="submit" id="btn-filter-descricao" onclick="getDescricao()">
+          <img class="img-button-filtro" src="{{url('img/icones/question-1.png')}}">
+        </button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="todo-pesquisa d-flex justify-content-center">
+        <input type="text" class="input-filtro" placeholder="#Código" id="codigo" name="codigo" required>
+        <button class="button-filtro" type="submit" id="btn-filter-cod" onclick="getCodigo()">
+          <img class="img-button-filtro" src="{{url('img/icones/question-1.png')}}">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-lista-scheduling hide">
+    <div class="col-md-12">
+      <div class="toda-lista">
+        <button type="button" class="btn btn-danger" id="btn-fechar-bloco-texto" onclick="closeBlocoTexto()">
+          <i class="fa fa-times" aria-hidden="true">
+          </i>
+        </button>
+        <table class="table table-hover table-striped">
+          <thead style="background:#db9702; color:#fff">
+            <tr>
+              <th scope="col">OBJETO</th>
+              <th scope="col">DATA</th>
+              <th scope="col">HORA</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($scheduling as $ag)
+            <tr>
+              <td>{{$ag->nome}}</td>
+              <td>{{ date( 'd/m/Y' , strtotime($ag->data_hora)) }}</td>
+              <td>{{ date( 'h:i' , strtotime($ag->data_hora)) }}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+    </div>    
+  </div>
+
+  <div class="row row-cadastrar-objeto hide">
+    <div class="col-md-12">
+      <div class="todo-cad-obj">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-11 d-flex justify-content-left">
+              <h3 style="font-family: arial black;">CADASTRAR ITEM</h3>
+            </div>
+            <div class="col-md-1">
+              <button type="button" class="btn btn-danger" id="btn-fechar-bloco-texto" onclick="closeBlocoTexto()">
+                <i class="fa fa-times" aria-hidden="true">
+                </i>
+              </button>
+            </div>
+          </div>
+          <form id="form-salvar" action="{{url('painel/achadosperdidosadmin/salvarobj')}}" method="POST">
+            {{ csrf_field() }}
+            <input type="hidden" name="stage" value="{{$stage or '[]'}}">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="Nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="detalhes">Detalhes do item:</label>
+                <textarea class="form-control" rows="2" id="detalhes" name="detalhes" placeholder="Detalhes do item:"></textarea>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="local-encontrado">Local encontrado:</label>
+                <textarea class="form-control" rows="2" id="local-encontrado" name="local" placeholder="Local encontrado:"></textarea>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="project">project</label>
+                <select id="project" name="project" class="form-control">
+                  <option selected>Escolha...</option>
+                  @foreach($project as $cat)
+                    <option value="{{$cat->id}}" <?php if(old('project') == $cat->id){echo 'selected=selected';}?> >
+                      {{$cat->nome}}
+                    </option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success" style="font-family: arial black;">SALVAR</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>    
+  </div>
+
+  <div class="row row-itens hide">
+  <!--
+    Trecho que será preenchido pela função insere itens 
+  -->   
+  </div>
+
+  <div class="row row-agendar hide">
+        <!--
+          Trecho que será preenchido pela função blocoTexto()
+        -->
+  </div>
+
 </div>
+@endsection
+
+@section('javascript')
+<script type="text/javascript">
+
+var urlGetCodigo = "{{url('/painel/get_codigo_admin')}}";
+var urlGetNome = "{{url('/painel/get_nome_admin?nome')}}";
+var urlGetDescricao = "{{url('/painel/get_descricao_admin?descricao')}}";
+
+var caminho_imagem = "{{url('img/icones/lista-1.png')}}";
+
+
+var stage = {!! $stage !!};
+var project = {!! $project !!};
+var scheduling =  {!! $scheduling !!};
+
+
+function listarAgendamento(){
+  $('.row-lista-scheduling').removeClass('hide');
+  $('.row-cadastrar-objeto').addClass('hide');
+  $('.icones').addClass('hide');
+  $('.row-pesquisa').addClass('hide');
+  $('.row-itens').addClass('hide');
+  $('.row-agendar').addClass('hide');
+  $('.todo-icone').removeClass('todo-icone-ativo');
+}
+
+function cadastrarObjeto(){
+  $('.row-cadastrar-objeto').removeClass('hide');
+  $('.row-lista-scheduling').addClass('hide');
+  $('.icones').addClass('hide');
+  $('.row-pesquisa').addClass('hide');
+  $('.row-itens').addClass('hide');
+  $('.row-agendar').addClass('hide');
+  $('.todo-icone').removeClass('todo-icone-ativo');
+}
+
+
+function btnCategoria() {
+  var txtcat;
+
+  project.forEach(function(cat, index){
+    var imgcat1 = '{{url("img/icones/")}}';
+    var aux = imgcat1 + '/' + cat.imagem;
+
+    txtcat = '<div class="col-md-2">'+
+                '<div class="container">'+
+                  '<div class="row">'+
+                    '<div class="col-md-12 todo-icone d-flex justify-content-center" onclick="clickCategoria(this, '+index+')">'+
+                      '<img class="icone-img" src="'+aux+'">'+
+                    '</div>'+
+                  '</div>'+
+                  '<div class="row">'+
+                    '<div class="col-md-12 div-texto-icone d-flex justify-content-center">'+
+                      '<p class="texto-icone">'+
+                        cat.nome+
+                      '</p>'+
+                    '</div>'+
+                  '</div>'+
+                '</div>'+
+             '</div>';
+
+    $('.icones').append(txtcat);
+  }); 
+
+}
+$(document).ready(btnCategoria());
+
+
+
+/*================== início - Bloco de texto  ==============*/
+
+function blocoTexto(index) {
+
+  var caminho_salvar = "{{url('painel/achadosperdidosadmin/salvar_retirada')}}"
+
+  blocotxt = 
+    '<div class="col-md-12">'+
+      '<div class="bloco-agendar d-flex justify-content-center">'+
+        '<div class="container">'+
+        '<button type="button" class="btn btn-danger" id="btn-fechar-bloco-texto" onclick="closeBlocoTexto()">'+
+          '<i class="fa fa-times" aria-hidden="true">'+
+          '</i>'+
+        '</button>'+
+          '<div class="row">'+
+            '<div class="col-md-5 conteudo-agendamento hide d-flex justify-content-center">'+
+              '<div class="container">'+
+                '<div class="row">'+
+                  '<div class="col-md-2">'+
+                    '<img class="img-lista-bloco-agendar" src="'+caminho_imagem+'">'+
+                  '</div>'+
+                  '<div class="col-md-10">'+
+                    '<div class="row">'+
+                      '<div class="col-md-12">'+
+                        '<h4>'+
+                          stage[index].nome+
+                        '</h4>'+
+                      '</div>'+
+                    '</div>'+
+                    '<div class="row">'+
+                      '<div class="col-md-12">'+
+                        '<span>'+
+                          stage[index].codigo+
+                        '</span>'+
+                      '</div>'+
+                    '</div>'+
+                  '</div>'+
+                '</div>'+
+                '<div class="row row-detalhes" style="margin-top:10px">'+
+                  '<div class="col-md-12">'+
+                    '<p style="font-size:13px; font-weight: bold; margin-bottom:0px;">Detalhes do item:</p>'+
+                    stage[index].detalhes_item+
+                  '</div>'+
+                '</div>'+
+                '<div class="row row-detalhes" style="margin-top:10px">'+
+                  '<div class="col-md-12">'+
+                    '<p style="font-size:13px; font-weight: bold; margin-bottom:0px;">Local encontrado::</p>'+
+                    stage[index].local_encontrado+
+                  '</div>'+
+                '</div>'+
+              '</div>'+
+            '</div>'+
+            '<div class="col-md-7 conteudo-agendamento d-flex justify-content-center">'+
+              '<div class="bloco-de-texto">'+
+                '<div class="container" style="margin-top:10px; margin-left:20px;">'+
+                  '<div class="row">'+
+                    '<div class="col-md-12">'+
+                      '<div class="conteudo-bloco-texto d-flex justify-content-center">'+
+                        '<h6 style="font-family: arial black;">'+
+                          'Cadastrar Retirada:'+
+                        '</h6>'+
+                      '</div>'+
+                    '</div>'+
+                  '</div>'+
+                  '<div class="row">'+
+                    '<div class="col-md-12 form-bloco-texto">'+
+                      '<form action="'+caminho_salvar+'" method="POST">'+
+                      '{{ csrf_field() }}'+
+                      '<input type="hidden" name="stage" value="'+stage[index].codigo+'">'+
+                        '<div class="form-row">'+
+                          '<div class="form-group col-md-6">'+
+                            '<label for="Nome">'+
+                              'Nome:'+
+                            '</label>'+
+                            '<input type="text" class="input-agendar" id="nome-retirada" name="nome-retirada">'+
+                          '</div>'+
+                          '<div class="form-group col-md-5">'+
+                            '<label for="doc">'+
+                              'Documento'+
+                            '</label>'+
+                            '<input type="text" class="input-agendar" id="documento" name="documento">'+
+                          '</div>'+
+                        '</div>'+
+                        '<div class="form-row">'+
+                          '<div class="form-group col-md-6">'+
+                            '<label for="Data">'+
+                              'Data:'+
+                            '</label>'+
+                            '<input type="date" class="input-agendar" id="data" name="data" required>'+
+                          '</div>'+
+                          '<div class="form-group col-md-5">'+
+                            '<label for="codigo">'+
+                              'Hora'+
+                            '</label>'+
+                            '<input type="time" class="input-agendar" id="hora" name="hora" required>'+
+                          '</div>'+
+                        '</div> '+
+                        '<button type="submit" class="btn btn-success" id="btn-agendar" name="btn-agendar" onclick="dateTime()">'+
+                          'SALVAR'+
+                        '</button>'+
+                      '</form>'+
+                    '</div>'+
+                  '</div>'+
+                '</div>'+
+              '</div>'+
+            '</div>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+    
+
+  $('.row-agendar').html(blocotxt);
+  $('.row-agendar').removeClass('hide');
+
+}
+
+/*================== final - Bloco de texto  ==============*/
+
+function dateTime() {
+  //atribui a variável data o valor do input cujo id = data
+  var data = document.getElementById('data').value;
+  //atribui a variável hora o valor do input cujo id = hora
+  var hora = document.getElementById('hora').value; 
+  //concatena as duas variaveis separadas por espaço e joga no value do input cujo id = btn-agendar
+  document.getElementById('btn-agendar').value=data+ " " + hora;
+}
+
+</script>
 @endsection
