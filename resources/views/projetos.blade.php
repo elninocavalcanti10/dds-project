@@ -14,7 +14,7 @@
   <div class="row">
     <div class="col-md-12 d-flex justify-content-center">
       <div class="header d-flex justify-content-center">
-        <img class="achados-perdidos-img" src="{{url('img/gerencia-dds.png')}}" alt="PROJETOS">
+        <img class="achados-perdidos-img" src="{{url('image/gerencia-dds.png')}}" alt="PROJETOS">
         <h1 class="achados-perdidos-title">PROJETOS</h1>
       </div>  
     </div>
@@ -79,13 +79,14 @@ var caminho_imagem = "{{url('img/icones/lista-1.png')}}";
 
 var stage = {!! $stage !!};//objetos1
 var project = {!! $project !!};//categoria1
+console.log(project);
 var scheduling =  {!! $scheduling !!};//agenda1
 
 function btnCategoria() {
   var txtcat;
 
   project.forEach(function(cat, index){
-    var imgcat1 = '{{url("img/icones/")}}';
+    var imgcat1 = '{{url("image/")}}';
     var aux = imgcat1 + '/' + cat.imagem;
 
     txtcat = '<div class="col-md-2">'+
@@ -117,7 +118,7 @@ $(document).ready(btnCategoria());
 
 function blocoTexto(index) {
 
-  var caminho_salvar = "{{url('painel/achadosperdidos/salvar')}}"
+  var caminho_salvar = "{{url('painel/projetos/salvar')}}"
 
   blocotxt = 
     '<div class="col-md-12">'+
@@ -246,6 +247,136 @@ function dateTime() {
   var hora = document.getElementById('hora').value; 
   //concatena as duas variaveis separadas por espaço e joga no value do input cujo id = btn-agendar
   document.getElementById('btn-agendar').value=data+ " " + hora;
+}
+
+/** INICIO PESQUISA **/
+function getCodigo() {
+var codig = $('#codigo').val();
+  $.ajax({
+    url: urlGetCodigo,
+    success: function(cod){
+      var cod_obj = JSON.parse(cod);
+      $('.row-itens').empty();
+      cod_obj.forEach(function(obj, index){
+        if(codig === obj.codigo) {
+          insereItens(obj, index);
+        }
+
+      });
+      $('.todo-icone').removeClass('todo-icone-ativo');
+      document.getElementById('codigo').value='';
+      $('.row-itens').removeClass('hide');
+    }
+  });
+}
+
+function getNome() {
+var name_input = $('#nome').val();
+  $.ajax({
+    url: urlGetNome,
+    success: function(name){
+      var name_obj = JSON.parse(name);
+      $('.row-itens').empty();
+      name_obj.forEach(function(obj, index){
+        var a = obj.nome.toLowerCase();
+        var b = name_input.toLowerCase();
+
+        if(a.indexOf(b) !== -1){
+          insereItens(obj, index);
+        }
+
+      });
+      $('.todo-icone').removeClass('todo-icone-ativo');
+      document.getElementById('nome').value='';
+      $('.row-itens').removeClass('hide');
+    }
+  });
+}
+
+
+function getDescricao() {
+var descricao_input = $('#descricao').val();
+  $.ajax({
+    url: urlGetDescricao,
+    success: function(description){
+      var desc_obj = JSON.parse(description);
+      $('.row-itens').empty();
+      desc_obj.forEach(function(obj, index){
+        var a = obj.detalhes_item.toLowerCase();
+        var b = descricao_input.toLowerCase();
+
+        if(a.indexOf(b) !== -1){
+          insereItens(obj, index);
+        }
+
+      });
+      $('.todo-icone').removeClass('todo-icone-ativo');
+      document.getElementById('nome').value='';
+      $('.row-itens').removeClass('hide');
+    }
+  });
+}
+/** FINAL PESQUISA **/
+
+
+function clickCategoria(e, index) {
+
+  $('.todo-icone').removeClass('todo-icone-ativo');
+  $(e).addClass('todo-icone-ativo');
+
+
+  $('.row-itens').empty();
+  stage.forEach(function(obj, index2){
+    if(project[index].id === obj.id_project) {
+      insereItens(obj, index2);
+    }
+
+  });
+
+  $('.row-itens').removeClass('hide');
+}
+
+
+/*================== início - Insere Itens  ==============*/
+function insereItens(obj, index) {
+    var txt;
+  
+    txt = '<div class="col-md-4 obj-itens">'+
+            '<div class="todo-item d-flex justify-content-center">'+
+              '<div class="container" onclick="blocoTexto('+index+')">'+
+                '<div class="row">'+
+                  '<div class="col-md-12 d-flex justify-content-center">'+
+                    '<h4>'+
+                      obj.nome+
+                    '</h4>'+
+                  '</div>'+
+                '</div>'+
+                '<div class="row">'+
+                  '<div class="col-md-12 d-flex justify-content-center">'+
+                    '<span>'+
+                      obj.codigo+
+                    '</span>'+
+                  '</div>'+
+                '</div>'+
+            '</div>'+
+            '<img class="img-lista" src="'+caminho_imagem+'">'+
+          '</div>'+
+        '</div>';
+    $(".row-itens").append(txt);
+
+    $('.row-agendar').empty();
+    $('.row-agendar').removeClass('hide');
+
+}
+
+$(document).ready(insereItens());
+
+
+/*================== final - Insere Itens  =================*/
+
+
+function closeBlocoTexto(){
+  $('.row-agendar').addClass('hide');
 }
 
 

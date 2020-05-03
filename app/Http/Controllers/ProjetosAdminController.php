@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\User;
-use App\Models\Project;
-use App\Models\Stage;
-use App\Models\Scheduling;
+use App\Http\Project;
+use App\Http\Stage;
+use App\Http\Scheduling;
 use DB;
 
 
@@ -31,11 +31,11 @@ LIMIT 1’)->get();
 
 	public function index(){
 
-		$scheduling = Scheduling::select('stage.nome', 'scheduling.data_hora', 'scheduling.id_objeto', 'scheduling.excluido')
+		$scheduling = Scheduling::select('stage.nome', 'scheduling.data_prevista', 'scheduling.id_stage', 'scheduling.excluido')
                         ->where('scheduling.excluido','=',0)
 												->where('stage.status','=',0)
-												->join('stage', 'stage.id', '=', 'scheduling.id_objeto')
-                        ->orderby('scheduling.data_hora', 'desc')
+												->join('stage', 'stage.id', '=', 'scheduling.id_stage')
+                        ->orderby('scheduling.data_prevista', 'desc')
                         ->limit(10)
 												->get();
 
@@ -43,10 +43,10 @@ LIMIT 1’)->get();
 														->where('project.excluido','=',0)
 														->get();
 
-		$stageProj = Stage::select('stage.id_categoria', 'stage.nome', 'stage.codigo', 'stage.detalhes_item', 'stage.local_encontrado', 'stage.status', 'stage.documento')
+		$stageProj = Stage::select('stage.id_Project', 'stage.nome', 'stage.codigo', 'stage.detalhes', 'stage.local', 'stage.status', 'stage.observacao')
 												->where('stage.excluido','=',0)
                         ->where('stage.status','=',0)
-												->join('project', 'project.id', '=', 'stage.id_categoria')
+												->join('project', 'project.id', '=', 'stage.id_Project')
 												->get();
 
    	$stageProj = json_encode($stageProj);
@@ -56,8 +56,9 @@ LIMIT 1’)->get();
 
 
 /** SALVA UM NOVO OBJETO NA FERRAMENTA ACHADOS E PERDIDOS **/
-	public function salvarObjeto(Request $request){
+	public function salvarEtapa(Request $request){
     	$dados = $request->all();
+    	dd($dados);
 
       //verifica a categoria
       if(Project::where('id','=',$dados['project'])->where('excluido','=',0)->count() == 0){
@@ -83,7 +84,7 @@ LIMIT 1’)->get();
                               'codigo' => '#'.$codigo['random_num'],
                               'detalhes_item' => $dados['detalhes'],
                               'local_encontrado' => $dados['local'],
-                              'id_categoria' => $dados['project'],
+                              'id_Project' => $dados['project'],
                               'status' => 0]);
                   
           }
@@ -99,9 +100,9 @@ LIMIT 1’)->get();
   }
 
 /** SALVA A RETIRADA DO OBJETO **/
-  public function salvarRetirada(Request $request){
+  public function salvarEntrega(Request $request){
       $dados = $request->all();
-      //dd($dados);
+      dd($dados);
       
       DB::beginTransaction();
         try {

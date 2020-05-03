@@ -4,7 +4,6 @@ body {
 .hide{ display: none; }
 .title-home{ font-weight: bold; color: blanchedalmond; }
 .pesquisa-nome{ font-weight: bold; }
-.header{ background-image: linear-gradient(to right, black , gray); }
 #icon-search{ color: #fff; }
 #name-icon{ font-weight: bold; color:#fff; font-size: 16px; }
 #btn-icon{ height: 100px; width: 100%; }
@@ -21,3 +20,80 @@ body {
 .sidenav a { padding: 20px; text-decoration: none; font-size: 14px; color: #818181; display: block; }
 .sidenav a:hover { color: #010101; }
 .main { margin-left: 200px; }
+
+/*começa aqui projetos*/
+.achados-perdidos-img{ max-height: 180px; max-width: 60px; }
+.achados-perdidos-title{ margin-left:15px; font-family: arial black; }
+.icones{  }
+.todo-icone, .header { width:100%; height:130px; padding:30px; }
+.todo-icone-ativo{ background: #fff; border: 3px solid #db9702; border-radius: 20px; }
+.todo-item { width:100%; display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #db9702; }
+.bloco-agendar{ background-color: #fff; padding: 6px; border-radius: 35px; border: 3px solid #db9702; }
+.todo-pesquisa{ width:100%; display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #db9702; }
+.icone-img{ width:85px; height:67px; }
+.icone-celular-img, #contentPage > div > div.row.icones > div:nth-child(3) > div > div:nth-child(1) > div > img{ width:40px; height:67px; margin: 0 auto; display: block; }
+.texto-icone { font-size: 11px; margin-top: 10px; }
+.row-pesquisa, .row-itens { margin: 30px 0px; }
+.row-agendar{ margin: 10px 0px; position: absolute; z-index: 10; top: 440px; right: 150px; left: 150px; }
+.bloco-de-texto{ background-image: url("../../../img/icones/achados_perdidos_bloco_de_texto.png"); min-height: 260px; width: 100%; border-radius: 20px; }
+.conteudo-agendamento{ padding: 30px; }
+.conteudo-bloco-texto{ padding: 30px 0px 0px 100px; }
+.form-bloco-texto{ padding-left: 100px; }
+.input-agendar{ width: 100%; border: 3px solid #db9702; border-radius: 20px; padding-left: 2px; }
+#btn-agendar{ right: 15px; position: absolute; border-radius: 50%; padding: 4px; font-weight: bold; }
+.hora-agendar{ padding: 0px; }
+#hora, #data{ padding-left: 15px; }
+.obj-itens{ margin: 5px 0px; }
+#btn-fechar-bloco-texto{ float: right; }
+
+.img-button-filtro{ height: 28px; }
+.img-lista{ height: 28px; right: 25px; bottom: 5px; position: absolute; }
+.img-lista-bloco-agendar{ height: 28px; left: 25px; top: 10px; position: absolute; }
+.button-filtro{ width: 28px; height: 28px; padding: 0; border: 0; background-color: #fff; }
+.input-filtro{ width: 83%; padding: 2px; border: none; vertical-align: top; outline-color: #db9702; color:  #db9702; text-align: center; }
+.envolucro-filtro{ display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #db9702; }
+
+::-webkit-input-placeholder {color: black;} :-moz-placeholder {color: black;} ::-moz-placeholder {color: black;}:-ms-input-placeholder {color: black;}
+
+.hide{ display: none; }
+
+
+
+/*Projetos Admin*/
+.achados-perdidos-img, #btn-time, #btn-plus{ max-height: 60px; max-width: 180px; margin: 0 10px; }
+.achados-perdidos-title{ margin-left:15px; font-family: arial black; }
+.icones{  }
+.todo-icone, .header { width:100%; height:130px; padding:30px; }
+.todo-icone-ativo{ background: #fff; border: 3px solid #db9702; border-radius: 20px; }
+.todo-item { width:100%; display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #db9702; }
+.bloco-agendar{ background-color: #fff; padding: 6px; border-radius: 35px; border: 3px solid #db9702; }
+.todo-pesquisa{ width:100%; display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #db9702; }
+.icone-img{ width:85px; height:67px; }
+.icone-celular-img, #contentPage > div > div.row.icones > div:nth-child(3) > div > div:nth-child(1) > div > img{ width:40px; height:67px; margin: 0 auto; display: block; }
+.texto-icone { font-size: 11px; margin-top: 10px; }
+.row-pesquisa, .row-itens { margin: 30px 0px; }
+.row-agendar{ margin: 10px 0px; position: absolute; z-index: 10; top: 440px; right: 150px; left: 150px; }
+.bloco-de-texto{ background-image: url("../../../img/icones/achados_perdidos_bloco_de_texto.png"); min-height: 260px; width: 100%; border-radius: 20px; }
+.conteudo-agendamento{ padding: 20px; }
+.conteudo-bloco-texto{ padding: 0px 0px 0px 0px; }
+.form-bloco-texto{ padding-left: 100px; }
+.input-agendar{ width: 100%; border: 3px solid #db9702; border-radius: 20px; padding-left: 2px; }
+#btn-agendar{ padding: 7px; font-weight: bold; }
+.hora-agendar{ padding: 0px; }
+#hora, #data{ padding-left: 15px; }
+.obj-itens{ margin: 5px 0px; }
+#btn-fechar-bloco-texto{ float: right; }
+
+.toda-lista, .todo-cad-obj{ width:100%; display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #db9702; }
+#form-salvar{  }
+
+.img-button-filtro{ height: 28px; }
+.img-lista{ height: 28px; right: 25px; bottom: 5px; position: absolute; }
+.img-lista-bloco-agendar{ height: 28px; left: 25px; top: 10px; position: absolute; }
+.button-filtro{ width: 28px; height: 28px; padding: 0; border: 0; background-color: #fff; }
+.input-filtro{ width: 83%; padding: 2px; border: none; vertical-align: top; outline-color: #db9702; color:  #db9702; text-align: center; }
+.envolucro-filtro{ display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #db9702; }
+
+::-webkit-input-placeholder {color: black;} :-moz-placeholder {color: black;} ::-moz-placeholder {color: black;}:-ms-input-placeholder {color: black;}
+
+.hide{ display: none; }

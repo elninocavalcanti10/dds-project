@@ -1,5 +1,5 @@
 <?php
-namespace App\Models;
+namespace App\Http;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;

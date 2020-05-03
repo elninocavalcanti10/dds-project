@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\User;
-use App\Models\Project;
-use App\Models\Stage;
-use App\Models\Scheduling;
+use App\Http\Project;
+use App\Http\Stage;
+use App\Http\Scheduling;
 use DB;
 
 
@@ -27,13 +27,12 @@ class ProjetosController extends Controller
 		$scheduling = Scheduling::all();
 		$scheduling = json_encode($scheduling);
 
-		$project = Project::where('project.excluido','=',0)
-											->get();
+		$project = Project::where('project.excluido','=',0)->get();
 
-		$stage = Stage::select('stage.id_categoria', 'stage.nome', 'stage.codigo', 'stage.detalhes_item', 'stage.local_encontrado', 'stage.status', 'stage.documento')
+		$stage = Stage::select('stage.id_Project', 'stage.nome', 'stage.codigo', 'stage.detalhes', 'stage.local', 'stage.linguagens_ferramentas', 'stage.status', 'stage.observacao')
 												->where('stage.excluido','=',0)
                         ->where('stage.status','=',0)
-												->join('project', 'project.id', '=', 'stage.id_categoria')
+												->join('project', 'project.id', '=', 'stage.id_Project')
 												->get();
 
    	$stage = json_encode($stage);
@@ -46,6 +45,7 @@ class ProjetosController extends Controller
 
 	public function salvar(Request $request){
     	$dados = $request->all();
+    	dd($dados);
       
     	DB::beginTransaction();
         try {
