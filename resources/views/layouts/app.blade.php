@@ -31,6 +31,8 @@
     <link href="{{ asset('css/configuracoes.css') }}" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
+    @yield('styles')
+
 </head>
 <body>
   <div id="app">
