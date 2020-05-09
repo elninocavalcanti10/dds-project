@@ -46,31 +46,26 @@ class ProjetosController extends Controller
 
   public function salvar(Request $request){
       $dados = $request->all();
+      // dd($dados1['id']);
       
       DB::beginTransaction();
         try {
-          if(isset($dados['agenda']) && !empty($dados['agenda'])){
-              $agenda = json_decode($dados['agenda'], true);
+            $dados1 = Etapas::select('id')
+                            ->where('excluido','=',0)
+                            ->where('etapas.codigo','=',$dados['objetoCat'])
+                            ->first();
 
-              $dados1 = Etapas::select('id')
-                              ->where('excluido','=',0)
-                              ->where('etapas.codigo','=',$dados['agenda'])
-                              ->first();
-
-              if(count($dados1) === 1) {
-                Agendamento::create(['id_etapa' => $dados1->id,'data_hora' => $dados['btn-agendar']]);
-              } else{die('Não foi possível agendar, tente novamente!');}                   
+                Agendamento::create(['id_etapa' => $dados1['id'], 'data_hora' => $dados['btn-agendar']]);
                   
-          }
           DB::commit();
 
         } catch (\Exception $e) {
           DB::rollback();
           return var_dump($e->getMessage());die();
-          return redirect('painel/projetos')->with('error','Não foi possível agendar, tente novamente!3');
+          return redirect('painel/projetos')->with('error','Não foi possível agendar, tente novamente!');
         }
 
-       return redirect('painel/projetos')->with('success','Agendado com sucesso!');
+       return redirect('painel/projetos')->with('success','Data de entrega prevista foi salva com sucesso!');
     }
 
 

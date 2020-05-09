@@ -24,15 +24,18 @@ Route::group(['prefix' => '/painel'], function() {
 	Route::get('/projetos', 'ProjetosController@index')->name('projetos');
 	Route::post('/projetos/salvar', 'ProjetosController@salvar');
 
-	//Achados e Perdidos
+	//Projetos Admin
 	Route::get('/get_codigo_admin', 'ProjetosAdminController@getCodigo');
 	Route::get('/get_nome_admin', 'ProjetosAdminController@getNome');
 	Route::get('/get_descricao_admin', 'ProjetosAdminController@getDescricao');
 	Route::get('/projetos-admin', 'ProjetosAdminController@index')->name('projetosAdmin');
 	Route::post('/projetos-admin/salvar_etapa', 'ProjetosAdminController@salvarEtapa');
-	Route::post('/achadosperdidosadmin/salvar_conclusao', 'ProjetosAdminController@salvarConclusao');
+	Route::post('/projetos-admin/salvar_conclusao', 'ProjetosAdminController@salvarConclusao');
+	Route::post('/projetos-admin/finalizar_projeto', 'ProjetosAdminController@finalizarProjeto');
 	
+	//Configurações
 	Route::get('/configuracoes', 'ConfiguracoesController@index')->name('configuracoes');
+	Route::post('/configuracoes/criar_projeto', 'ConfiguracoesController@criarProjeto');
 	
 
 	Route::get('/estatisticas', 'EstatisticasController@index')->name('estatisticas');

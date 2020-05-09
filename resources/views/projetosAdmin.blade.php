@@ -1,39 +1,39 @@
 @extends('layouts.app')
 @section('styles')
 <style type="text/css">
-.achados-perdidos-img, #btn-time, #btn-plus{ max-height: 60px; max-width: 60px; margin: 0 10px; }
+.achados-perdidos-img, #btn-time, #btn-plus{ max-height: 60px; max-width: 180px; margin: 0 10px; }
 .achados-perdidos-title{ margin-left:15px; font-family: arial black; }
 .icones{  }
-.todo-icone, .header { width:100%; height:130px; padding:30px; }
-.todo-icone-ativo{ background: #fff; border: 3px solid #db9702; border-radius: 20px; }
-.todo-item { width:100%; display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #db9702; }
-.bloco-agendar{ background-color: #fff; padding: 6px; border-radius: 35px; border: 3px solid #db9702; }
-.todo-pesquisa{ width:100%; display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #db9702; }
-.icone-img{ width:85px; height:67px; }
+.todo-icone, .header { width:100%; height:130px; padding:10px; }
+.todo-icone-ativo{ background: #fff; border: 3px solid #44d9e6; border-radius: 20px; }
+.todo-item { width:100%; display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #44d9e6; }
+.bloco-agendar{ background-color: #fff; padding: 6px; border-radius: 35px; border: 3px solid #44d9e6; }
+.todo-pesquisa{ width:100%; display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #44d9e6; }
+.icone-img{ width:100%; height:100%;border: 1px solid; border-radius: 10px; }
 .icone-celular-img, #contentPage > div > div.row.icones > div:nth-child(3) > div > div:nth-child(1) > div > img{ width:40px; height:67px; margin: 0 auto; display: block; }
 .texto-icone { font-size: 11px; margin-top: 10px; }
 .row-pesquisa, .row-itens { margin: 30px 0px; }
-.row-agendar{ margin: 10px 0px; position: absolute; z-index: 10; top: 440px; right: 150px; left: 150px; }
-.bloco-de-texto{ background-image: url("../../../img/icones/achados_perdidos_bloco_de_texto.png"); min-height: 260px; width: 100%; border-radius: 20px; }
+.row-agendar{ margin: 10px 0px; position: absolute; z-index: 10; top: 500px;width: 85%; }
+.bloco-de-texto{ background-image: url("../../../image/lista.jpeg"); min-height: 260px; width: 100%; border-radius: 20px; }
 .conteudo-agendamento{ padding: 20px; }
 .conteudo-bloco-texto{ padding: 0px 0px 0px 0px; }
 .form-bloco-texto{ padding-left: 100px; }
-.input-agendar{ width: 100%; border: 3px solid #db9702; border-radius: 20px; padding-left: 2px; }
+.input-agendar{ width: 100%; border: 3px solid #44d9e6; border-radius: 20px; padding-left: 2px; }
 #btn-agendar{ padding: 7px; font-weight: bold; }
 .hora-agendar{ padding: 0px; }
 #hora, #data{ padding-left: 15px; }
 .obj-itens{ margin: 5px 0px; }
 #btn-fechar-bloco-texto{ float: right; }
 
-.toda-lista, .todo-cad-obj{ width:100%; display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #db9702; }
+.toda-lista, .todo-cad-obj{ width:100%; display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #44d9e6; }
 #form-salvar{  }
 
 .img-button-filtro{ height: 28px; }
 .img-lista{ height: 28px; right: 25px; bottom: 5px; position: absolute; }
 .img-lista-bloco-agendar{ height: 28px; left: 25px; top: 10px; position: absolute; }
 .button-filtro{ width: 28px; height: 28px; padding: 0; border: 0; background-color: #fff; }
-.input-filtro{ width: 83%; padding: 2px; border: none; vertical-align: top; outline-color: #db9702; color:  #db9702; text-align: center; }
-.envolucro-filtro{ display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #db9702; }
+.input-filtro{ width: 83%; padding: 2px; border: none; vertical-align: top; outline-color: #44d9e6; color:  #44d9e6; text-align: center; }
+.envolucro-filtro{ display: inline-block; background-color: #fff; padding: 6px; border-radius: 16px; border: 3px solid #44d9e6; }
 
 ::-webkit-input-placeholder {color: black;} :-moz-placeholder {color: black;} ::-moz-placeholder {color: black;}:-ms-input-placeholder {color: black;}
 
@@ -60,6 +60,9 @@
         </button>
         <button type="button" class="btn btn-success" id="btn-plus" onclick="cadastrarObjeto()">
           <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn btn-danger" id="btn-plus" onclick="finalizarProjeto()">
+          <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
         </button>
       </div>  
     </div>
@@ -111,7 +114,7 @@
           </i>
         </button>
         <table class="table table-hover table-striped">
-          <thead style="background:#db9702; color:#fff">
+          <thead style="background:#44d9e6; color:#fff">
             <tr>
               <th scope="col">OBJETO</th>
               <th scope="col">DATA</th>
@@ -210,6 +213,29 @@
         -->
   </div>
 
+  <div class="row row-encerrar-projeto hide" style="background-color: #fff;padding: 6px;border-radius: 16px;border: 3px solid #44d9e6;padding: 50px;">
+      <div class="col-md-12">
+    <form action="{{url('painel/projetos-admin/finalizar_projeto')}}" method="POST">
+        {{ csrf_field() }}
+        <button type="button" class="btn btn-danger" id="btn-fechar-bloco-texto" onclick="closeBlocoTexto()" style="margin: 20px 0;">
+            <i class="fa fa-times" aria-hidden="true">
+            </i>
+        </button>
+        <label style="color: red;font-weight: bold;">Escolha o Projeto Finalizado:</label>
+          <select class="text-select form-control" name="projeto-exclui" id="projeto-exclui">
+           <option value="">SELECIONAR</option>
+           @foreach($projetos as $proj)
+            <option value="{{$proj->id}}" <?php if(old('projeto-exclui') == $proj->id){echo 'selected=selected';}?> >
+              {{$proj->nome}}
+            </option>
+          @endforeach
+        </select>
+        <button type="submit" class="btn btn-info" style="margin: 20px 0;">Finalizar</button>
+    </form>
+      </div>
+  </div>
+
+
 </div>
 @endsection
 
@@ -220,7 +246,7 @@ var urlGetCodigo = "{{url('/painel/get_codigo_admin')}}";
 var urlGetNome = "{{url('/painel/get_nome_admin?nome')}}";
 var urlGetDescricao = "{{url('/painel/get_descricao_admin?descricao')}}";
 
-var caminho_imagem = "{{url('image/lista-1.png')}}";
+var caminho_imagem = "{{url('image/checklist.png')}}";
 
 var etapas = {!! $etapaProj !!};
 var projeto = {!! $projetos !!};
@@ -230,6 +256,7 @@ var agenda =  {!! $agenda !!};
 function listarAgendamento(){
   $('.row-lista-agenda').removeClass('hide');
   $('.row-cadastrar-objeto').addClass('hide');
+  $('.row-encerrar-projeto').addClass('hide');
   $('.icones').addClass('hide');
   $('.row-pesquisa').addClass('hide');
   $('.row-itens').addClass('hide');
@@ -240,6 +267,18 @@ function listarAgendamento(){
 function cadastrarObjeto(){
   $('.row-cadastrar-objeto').removeClass('hide');
   $('.row-lista-agenda').addClass('hide');
+  $('.row-encerrar-projeto').addClass('hide');
+  $('.icones').addClass('hide');
+  $('.row-pesquisa').addClass('hide');
+  $('.row-itens').addClass('hide');
+  $('.row-agendar').addClass('hide');
+  $('.todo-icone').removeClass('todo-icone-ativo');
+}
+
+function finalizarProjeto() {
+  $('.row-encerrar-projeto').removeClass('hide');
+  $('.row-lista-agenda').addClass('hide');
+  $('.row-cadastrar-objeto').addClass('hide');
   $('.icones').addClass('hide');
   $('.row-pesquisa').addClass('hide');
   $('.row-itens').addClass('hide');
@@ -252,7 +291,7 @@ function btnProjeto() {
   var txtcat;
 
   projeto.forEach(function(proj, index){
-    var imgcat1 = '{{url("img/icones/")}}';
+    var imgcat1 = '{{url("image/")}}';
     var aux = imgcat1 + '/' + proj.imagem;
 
     txtcat = '<div class="col-md-2">'+
@@ -339,12 +378,13 @@ function closeBlocoTexto(){
   $('.row-cadastrar-objeto').addClass('hide');
   $('.icones').removeClass('hide');
   $('.row-pesquisa').removeClass('hide');
+  $('.row-encerrar-projeto').addClass('hide');
 }
 
 
 /*================== início - Bloco de texto  ==============*/
 function blocoTexto(index) {
-  var caminho_salvar = "{{url('painel/achadosperdidosadmin/salvar_retirada')}}"
+  var caminho_salvar = "{{url('painel/projetos-admin/salvar_conclusao')}}"
 
   blocotxt = 
     '<div class="col-md-12">'+
@@ -380,13 +420,13 @@ function blocoTexto(index) {
                 '</div>'+
                 '<div class="row row-detalhes" style="margin-top:10px">'+
                   '<div class="col-md-12">'+
-                    '<p style="font-size:13px; font-weight: bold; margin-bottom:0px;">Detalhes do item:</p>'+
+                    '<p style="font-size:13px; font-weight: bold; margin-bottom:0px;">Detalhes:</p>'+
                     etapas[index].detalhes_item+
                   '</div>'+
                 '</div>'+
                 '<div class="row row-detalhes" style="margin-top:10px">'+
                   '<div class="col-md-12">'+
-                    '<p style="font-size:13px; font-weight: bold; margin-bottom:0px;">Local encontrado::</p>'+
+                    '<p style="font-size:13px; font-weight: bold; margin-bottom:0px;">Local:</p>'+
                     etapas[index].local+
                   '</div>'+
                 '</div>'+
@@ -529,7 +569,7 @@ var descricao_input = $('#descricao').val();
 
       });
       $('.todo-icone').removeClass('todo-icone-ativo');
-      document.getElementById('nome').value='';
+      document.getElementById('descricao').value='';
       $('.row-itens').removeClass('hide');
     }
   });

@@ -22,9 +22,27 @@ class ConfiguracoesController extends Controller
 {
 
 	public function index(){
-
-    return view('configuracoes');
+    	return view('configuracoes');
 	}
 
+	public function criarProjeto(Request $request) {
+		$dados = $request->all();
+		// dd($dados);
+
+       DB::beginTransaction();
+        try {
+          
+          Projeto::create(['nome' => $dados['nome'],
+          								 'imagem' => 'assinaturas.png',
+        									]);        
+          
+          DB::commit();
+
+        } catch (\Exception $e) {
+          DB::rollback();
+          return redirect('painel/configuracoes')->with('error','Não foi criar projeto, tente novamente!');
+        }
+    return redirect('painel/configuracoes')->with('success','Agendado com sucesso!');    
+	}
 
 }
