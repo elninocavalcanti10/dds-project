@@ -28,10 +28,11 @@ Route::group(['prefix' => '/painel'], function() {
 	Route::get('/get_codigo_admin', 'ProjetosAdminController@getCodigo');
 	Route::get('/get_nome_admin', 'ProjetosAdminController@getNome');
 	Route::get('/get_descricao_admin', 'ProjetosAdminController@getDescricao');
-	Route::post('/projetos-admin/salvar_stage', 'ProjetosAdminController@salvarEtapa');
 	Route::get('/projetos-admin', 'ProjetosAdminController@index')->name('projetosAdmin');
-	Route::post('/achadosperdidosadmin/salvar_entrega', 'ProjetosAdminController@salvarEntrega');
+	Route::post('/projetos-admin/salvar_etapa', 'ProjetosAdminController@salvarEtapa');
+	Route::post('/achadosperdidosadmin/salvar_conclusao', 'ProjetosAdminController@salvarConclusao');
 	
+	Route::get('/configuracoes', 'ConfiguracoesController@index')->name('configuracoes');
 	
 
 	Route::get('/estatisticas', 'EstatisticasController@index')->name('estatisticas');
