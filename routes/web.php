@@ -36,6 +36,7 @@ Route::group(['prefix' => '/painel'], function() {
 	//Configurações
 	Route::get('/configuracoes', 'ConfiguracoesController@index')->name('configuracoes');
 	Route::post('/configuracoes/criar_projeto', 'ConfiguracoesController@criarProjeto');
+	Route::post('/configuracoes/atualizar_permissao', 'ConfiguracoesController@AtualizarPermissao');
 	
 
 	Route::get('/estatisticas', 'EstatisticasController@index')->name('estatisticas');

@@ -62,7 +62,7 @@
           <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
         </button>
         <button type="button" class="btn btn-danger" id="btn-plus" onclick="finalizarProjeto()">
-          <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+          <i class="fa fa-hand-o-right fa-2x" aria-hidden="true"></i>
         </button>
       </div>  
     </div>
@@ -251,6 +251,7 @@ var caminho_imagem = "{{url('image/checklist.png')}}";
 var etapas = {!! $etapaProj !!};
 var projeto = {!! $projetos !!};
 var agenda =  {!! $agenda !!};
+var idUser =  {!! $idUser !!};
 
 
 function listarAgendamento(){
@@ -291,27 +292,29 @@ function btnProjeto() {
   var txtcat;
 
   projeto.forEach(function(proj, index){
-    var imgcat1 = '{{url("image/")}}';
-    var aux = imgcat1 + '/' + proj.imagem;
+    if (proj.id_user == idUser) {
+      var imgcat1 = '{{url("image/")}}';
+      var aux = imgcat1 + '/' + proj.imagem;
 
-    txtcat = '<div class="col-md-2">'+
-                '<div class="container">'+
-                  '<div class="row">'+
-                    '<div class="col-md-12 todo-icone d-flex justify-content-center" onclick="clickProjeto(this, '+index+')">'+
-                      '<img class="icone-img" src="'+aux+'">'+
+      txtcat = '<div class="col-md-2">'+
+                  '<div class="container">'+
+                    '<div class="row">'+
+                      '<div class="col-md-12 todo-icone d-flex justify-content-center" onclick="clickProjeto(this, '+index+')">'+
+                        '<img class="icone-img" src="'+aux+'">'+
+                      '</div>'+
+                    '</div>'+
+                    '<div class="row">'+
+                      '<div class="col-md-12 div-texto-icone d-flex justify-content-center">'+
+                        '<p class="texto-icone">'+
+                          proj.nome+
+                        '</p>'+
+                      '</div>'+
                     '</div>'+
                   '</div>'+
-                  '<div class="row">'+
-                    '<div class="col-md-12 div-texto-icone d-flex justify-content-center">'+
-                      '<p class="texto-icone">'+
-                        proj.nome+
-                      '</p>'+
-                    '</div>'+
-                  '</div>'+
-                '</div>'+
-             '</div>';
+               '</div>';
 
-    $('.icones').append(txtcat);
+      $('.icones').append(txtcat);
+    }
   }); 
 }
 $(document).ready(btnProjeto());
@@ -426,6 +429,12 @@ function blocoTexto(index) {
                 '</div>'+
                 '<div class="row row-detalhes" style="margin-top:10px">'+
                   '<div class="col-md-12">'+
+                    '<p style="font-size:13px; font-weight: bold; margin-bottom:0px;">Linguagens e Ferramentas:</p>'+
+                    etapas[index].ling_ferramentas+
+                  '</div>'+
+                '</div>'+
+                '<div class="row row-detalhes" style="margin-top:10px">'+
+                  '<div class="col-md-12">'+
                     '<p style="font-size:13px; font-weight: bold; margin-bottom:0px;">Local:</p>'+
                     etapas[index].local+
                   '</div>'+
@@ -439,7 +448,7 @@ function blocoTexto(index) {
                     '<div class="col-md-12">'+
                       '<div class="conteudo-bloco-texto d-flex justify-content-center">'+
                         '<h6 style="font-family: arial black;">'+
-                          'Cadastrar Retirada:'+
+                          'Finalizar Etapa:'+
                         '</h6>'+
                       '</div>'+
                     '</div>'+
@@ -450,17 +459,10 @@ function blocoTexto(index) {
                       '{{ csrf_field() }}'+
                       '<input type="hidden" name="objetoCat" value="'+etapas[index].codigo+'">'+
                         '<div class="form-row">'+
-                          '<div class="form-group col-md-6">'+
-                            '<label for="Nome">'+
-                              'Nome:'+
-                            '</label>'+
-                            '<input type="text" class="input-agendar" id="nome-retirada" name="nome-retirada">'+
-                          '</div>'+
-                          '<div class="form-group col-md-5">'+
-                            '<label for="doc">'+
-                              'Documento'+
-                            '</label>'+
-                            '<input type="text" class="input-agendar" id="documento" name="documento">'+
+                          '<div class="form-group col-md-10">'+
+                            '<p>'+
+                              'Informe a data de término desta etapa:'+
+                            '</p>'+
                           '</div>'+
                         '</div>'+
                         '<div class="form-row">'+

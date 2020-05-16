@@ -46,7 +46,7 @@ class ProjetosController extends Controller
 
   public function salvar(Request $request){
       $dados = $request->all();
-      // dd($dados1['id']);
+      dd($dados1['id']);
       
       DB::beginTransaction();
         try {

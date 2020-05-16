@@ -22,7 +22,7 @@ class ProjetosAdminController extends Controller
 {
 
 	public function index(){
-
+    $idUser = Auth::user()->id;
     $agenda = Agendamento::select('etapas.nome', 'agendamento.data_hora', 'agendamento.id_etapa')
                         ->where('agendamento.excluido','=',0)
                         ->where('etapas.status','=',0)
@@ -31,8 +31,9 @@ class ProjetosAdminController extends Controller
                         ->limit(10)
                         ->get();
 
-    $projetos = Projeto::select('projeto.id', 'projeto.nome', 'projeto.imagem')
+    $projetos = Projeto::select('projeto.id', 'projeto.nome', 'projeto.imagem', 'projeto.id_user')
                         ->where('projeto.excluido','=', 0)
+                        ->where('projeto.id_user','=', $idUser)
                         ->whereNull('projeto.terminou')
                         ->get();
 
@@ -44,14 +45,14 @@ class ProjetosAdminController extends Controller
 
     $etapaProj = json_encode($etapaProj);
 
-    return view('projetosAdmin',compact('etapaProj', 'projetos', 'agenda'));
+    return view('projetosAdmin',compact('etapaProj', 'projetos', 'agenda', 'idUser'));
 	}
 
 
 /** SALVA UMA NOVA ETAPA NA FERRAMENTA **/
 	public function salvarEtapa(Request $request){
     $dados = $request->all();
-    // dd($dados);
+    $idUser = Auth::user()->id;
 
       $codigo = DB::table('etapas')
                  ->selectRaw(DB::raw('FLOOR(RANDOM() * 9999999) as random_num'))
@@ -59,6 +60,7 @@ class ProjetosAdminController extends Controller
                  ->first();
 
       $codigo= json_decode( json_encode($codigo), true);
+    // dd($dados, $idUser, $codigo);
       
       DB::beginTransaction();
         try {
@@ -72,7 +74,8 @@ class ProjetosAdminController extends Controller
                               'id_projeto' => $dados['projetos'],
                               'status' => 0,
                               'nome_gestor' => $dados['gestor'] ,
-                              'ling_ferramentas' => $dados['ferramentas'] ,
+                              'ling_ferramentas' => $dados['ferramentas'],
+                              'id_user' => $idUser,
                             ]);
                   
           }
@@ -84,7 +87,7 @@ class ProjetosAdminController extends Controller
           return redirect('painel/projetos-admin')->with('error','Não foi possível salvar, tente novamente!');
         }
 
-       return redirect('painel/projetos-admin')->with('success','item salvo com sucesso!');
+       return redirect('painel/projetos-admin')->with('success','Etapa salva com sucesso!');
   }
 
   /** SALVA A CONCLUSÃO DA ETAPA **/

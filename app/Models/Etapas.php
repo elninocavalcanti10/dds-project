@@ -19,6 +19,7 @@ class Etapas extends Model
       'id_projeto',
       'data_termino',
       'ling_ferramentas',
+      'id_user',
     ];
 
 

@@ -16,7 +16,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'permissoes', 'excluido',
+        'name', 
+        'email', 
+        'password', 
+        'permissoes', //7:Gerente; 1:Stakeholders(Insere data de previsão de término das etapas - Não vê Painel ADMIN e Config.) 
+        'excluido',
     ];
 
     /**

@@ -295,6 +295,12 @@ function blocoTexto(index) {
                 '</div>'+
                 '<div class="row row-detalhes" style="margin-top:10px">'+
                   '<div class="col-md-12">'+
+                    '<p style="font-size:13px; font-weight: bold; margin-bottom:0px;">Linguagens e Ferramentas:</p>'+
+                    etapas[index].ling_ferramentas+
+                  '</div>'+
+                '</div>'+
+                '<div class="row row-detalhes" style="margin-top:10px">'+
+                  '<div class="col-md-12">'+
                     '<p style="font-size:13px; font-weight: bold; margin-bottom:0px;">Local:</p>'+
                     etapas[index].local+
                   '</div>'+

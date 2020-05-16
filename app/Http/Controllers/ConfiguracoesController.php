@@ -22,27 +22,54 @@ class ConfiguracoesController extends Controller
 {
 
 	public function index(){
-    	return view('configuracoes');
+    $user = User::where('excluido', '=', 0)->get();
+    	return view('configuracoes', compact('user'));
 	}
 
 	public function criarProjeto(Request $request) {
 		$dados = $request->all();
-		// dd($dados);
+    $idUser = Auth::user()->id;
+		// dd($idUser);
 
        DB::beginTransaction();
         try {
           
           Projeto::create(['nome' => $dados['nome'],
           								 'imagem' => 'assinaturas.png',
+                           'id_user' => $idUser,
         									]);        
           
           DB::commit();
 
         } catch (\Exception $e) {
           DB::rollback();
-          return redirect('painel/configuracoes')->with('error','Não foi criar projeto, tente novamente!');
+          return redirect('painel/configuracoes')->with('error','Não foi criado o projeto, tente novamente!');
         }
-    return redirect('painel/configuracoes')->with('success','Agendado com sucesso!');    
+    return redirect('painel/configuracoes')->with('success','Projeto criado com sucesso!');    
 	}
+
+  public function AtualizarPermissao(Request $request) {
+    $dados = $request->all();
+    $idUser = $dados['id'];
+      
+      DB::beginTransaction();
+      try {
+
+        foreach ($idUser as $key => $value) {
+    // dd($idUser[$key]);
+          User::where('id','=',$key)->update(['permissoes'=>$idUser[$key]]);
+        }
+        DB::commit();
+
+      } catch (\Exception $e) {
+         
+        DB::rollback();
+        
+        return var_dump($e->getMessage());die();
+
+          return redirect('painel/configuracoes')->with('error','Não foi possível atualizar, tente novamento!');
+      }
+      return redirect('painel/configuracoes')->with('success','Permissão atualizado com sucesso!');
+  }
 
 }

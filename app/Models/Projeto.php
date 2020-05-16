@@ -13,6 +13,7 @@ class Projeto extends Model
       'imagem',
       'excluido',
       'terminou',
+      'id_user'
     ];
 
 
