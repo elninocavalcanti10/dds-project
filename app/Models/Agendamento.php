@@ -12,6 +12,7 @@ class Agendamento extends Model
       'id_etapa',
       'data_hora',
       'excluido',
+      'id_usuario'
     ];
 
 	public $timestamps = true;

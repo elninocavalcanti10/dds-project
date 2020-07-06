@@ -46,6 +46,7 @@ class ProjetosController extends Controller
 
   public function salvar(Request $request){
       $dados = $request->all();
+      $idUser = Auth::user()->id;
       // dd($dados);
       
       DB::beginTransaction();
@@ -55,7 +56,11 @@ class ProjetosController extends Controller
                             ->where('etapas.codigo','=',$dados['objetoCat'])
                             ->first();
 
-                Agendamento::create(['id_etapa' => $dados1['id'], 'data_hora' => $dados['btn-agendar']]);
+                Agendamento::create([
+                  'id_etapa' => $dados1['id'], 
+                  'data_hora' => $dados['btn-agendar'],
+                  'id_usuario' => $idUser
+                ]);
                   
           DB::commit();
 
