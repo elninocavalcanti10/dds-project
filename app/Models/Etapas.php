@@ -21,7 +21,14 @@ class Etapas extends Model
       'ling_ferramentas',
       'id_user',
     ];
-
-
 	public $timestamps = true;
+
+  public function projeto() {
+    return $this->belongsTo('App\Models\Projeto', 'id');
+  }
+
+  public function etapaUser() {
+    return $this->belongsTo('App\User', 'id_user', 'id');
+  }
+
 }

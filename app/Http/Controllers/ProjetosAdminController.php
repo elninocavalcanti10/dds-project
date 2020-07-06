@@ -28,7 +28,7 @@ class ProjetosAdminController extends Controller
                         ->where('etapas.status','=',0)
                         ->join('etapas', 'etapas.id', '=', 'agendamento.id_etapa')
                         ->orderby('agendamento.data_hora', 'desc')
-                        ->limit(10)
+                        ->limit(20)
                         ->get();
 
     $projetos = Projeto::select('projeto.id', 'projeto.nome', 'projeto.imagem', 'projeto.id_user')
@@ -93,7 +93,7 @@ class ProjetosAdminController extends Controller
   /** SALVA A CONCLUSÃO DA ETAPA **/
   public function salvarConclusao(Request $request){
       $dados = $request->all();
-      dd($dados);
+      // dd($dados);
       
       DB::beginTransaction();
         try {

@@ -21,6 +21,7 @@
     <script src="{{ asset('js/configuracoes.js') }}" defer></script>
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -106,6 +107,7 @@
         @yield('content')
     </main>
   </div>
-  @yield('javascript')
+
+    @yield('javascript')
 </body>
 </html>

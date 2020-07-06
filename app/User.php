@@ -15,13 +15,17 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'users';
     protected $fillable = [
+        'id',
         'name', 
         'email', 
         'password', 
         'permissoes', //7:Gerente; 1:Stakeholders(Insere data de previsão de término das etapas - Não vê Painel ADMIN e Config.) 
         'excluido',
     ];
+
+    public $timestamps = true;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -40,4 +44,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function userEtapas() {
+      return $this->hasMany('App\Models\Etapas', 'id_user', 'id');
+    }
+    public function projetoUser() {
+      return $this->hasMany('App\Models\Projeto', 'id_user', 'id');
+    }
 }

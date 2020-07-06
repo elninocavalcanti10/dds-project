@@ -13,7 +13,7 @@
 .icone-celular-img, #contentPage > div > div.row.icones > div:nth-child(3) > div > div:nth-child(1) > div > img{ width:40px; height:67px; margin: 0 auto; display: block; }
 .texto-icone { font-size: 11px; margin-top: 10px; }
 .row-pesquisa, .row-itens { margin: 30px 0px; }
-.row-agendar{ margin: 10px 0px; position: absolute; z-index: 10; top: 500px;width: 85%; }
+.row-agendar{ margin: 10px 0px; position: absolute; z-index: 10; top: 580px;width: 85%; }
 .bloco-de-texto{ background-image: url("../../../image/lista.jpeg"); min-height: 260px; width: 100%; border-radius: 20px; }
 .conteudo-agendamento{ padding: 20px; }
 .conteudo-bloco-texto{ padding: 0px 0px 0px 0px; }
