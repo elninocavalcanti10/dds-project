@@ -28,6 +28,7 @@ class ProjetosController extends Controller
 
     $projetos = Projeto::select('projeto.id', 'projeto.nome', 'projeto.imagem')
                             ->where('projeto.excluido','=',0)
+                            ->whereNull('projeto.terminou')
                             ->get();
 
     $etapaProj = Etapas::select('etapas.id_projeto', 'etapas.nome', 'etapas.codigo', 'etapas.detalhes_item', 'etapas.local', 'etapas.status', 'etapas.nome_gestor', 'etapas.ling_ferramentas')

@@ -43,7 +43,7 @@
             <div class=row>
               <div class=col-md-3>
                 <a href="{{ url('/painel/projetos') }}">
-                  <button type="button" id="btn-icon" class="btn btn-warning">
+                  <button type="button" id="btn-icon" class="btn btn-secondary">
                     <i class="fa fa-list-alt fa-3x" style="color: #fff;"></i> <br> <br>
                     <span id="name-icon">PROJETOS PAINEL</span>
                   </button>
