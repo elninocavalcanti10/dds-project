@@ -33,7 +33,13 @@
 		  		<label><strong>Gerente de Projeto:</strong></label>
 		  		<span> {{ $p->user->name }} </span><br>
 		  		<label><strong>Membros:</strong></label>
-		  		<span>Fulano, ciclano</span>
+          @foreach($usuarios as $usuario)
+            @foreach($agendamentos as $agendamento)
+              @if($usuario->id == $agendamento->id_usuario)
+      		  		<span>{{$usuario->name}} -</span>
+              @endif
+            @endforeach
+          @endforeach
 		  	</div>
 		  	<div class="col-md-6" style="padding: 20px;">
 		  		<label><strong>Linguagens e Ferramentas:</strong></label><br>
@@ -67,7 +73,7 @@
 				<div class="col-md-6 d-flex justify-content-center">
 					<div class="message">
 						<h4>Projeto entregue com:</h4><br>
-						<p style="text-align: center;">04 dias de atraso.</p>
+						<p style="text-align: center;">06 dias de atraso.</p>
 					</div>
 				</div>
 			</div>

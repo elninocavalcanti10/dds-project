@@ -23,8 +23,11 @@ class EstatisticasController extends Controller
       $projeto = Projeto::with('etapas', 'user')
       									->where('projeto.excluido', '=', 0)
       									->where('projeto.terminou', '=', 1)
-      									->get();
+                        ->get();
+      $etapas = Etapas::all();                        
+      $agendamentos = Agendamento::all();                        
+      $usuarios = User::all();                        
       // dd($projeto);
-      return view('estatisticas', compact('projeto'));
+      return view('estatisticas', compact('projeto','etapas', 'agendamentos', 'usuarios'));
     }
 }

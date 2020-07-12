@@ -116,7 +116,7 @@
         <table class="table table-hover table-striped">
           <thead style="background:#44d9e6; color:#fff">
             <tr>
-              <th scope="col">OBJETO</th>
+              <th scope="col">ETAPA</th>
               <th scope="col">DATA</th>
               <th scope="col">HORA</th>
             </tr>
