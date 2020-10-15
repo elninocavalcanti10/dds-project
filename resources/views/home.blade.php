@@ -8,7 +8,7 @@
         <div class="sidenav">
           <a href="{{ url('/') }}" style="border-bottom: solid 1px rgba(0,0,0,.125);">
             <i class="fa fa-tachometer"></i>
-            Dashboard
+            DashboardDashboardDashboardDashboard
           </a>
           <a href="{{ url('/painel/projetos') }}">
             <i class="fa fa-list-alt"></i>
