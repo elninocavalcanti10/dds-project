@@ -8,13 +8,13 @@
         <div class="sidenav">
           <a href="{{ url('/') }}" style="border-bottom: solid 1px rgba(0,0,0,.125);">
             <i class="fa fa-tachometer"></i>
-            DashboardDashboardDashboardDashboard
+            Dashboard
           </a>
           <a href="{{ url('/painel/projetos') }}">
             <i class="fa fa-list-alt"></i>
             Projetos Painel
           </a>
-          @if (Auth::user()->permissoes === 7)
+          @if (Auth::user()->permissoes == 7)
           <a href="{{ url('/painel/projetos-admin') }}">
             <i class="fa fa-id-card"></i>
             Projetos Admin
@@ -47,24 +47,24 @@
                     <i class="fa fa-list-alt fa-3x" style="color: #fff;"></i> <br> <br>
                     <span id="name-icon">PROJETOS PAINEL</span>
                   </button>
-                  </a>          
+                  </a>
               </div>
-              @if (Auth::user()->permissoes === 7)
+              @if (Auth::user()->permissoes == 7)
               <div class=col-md-3>
                 <a href="{{ url('/painel/projetos-admin') }}">
                   <button type="button" id="btn-icon" class="btn btn-success">
                     <i class="fa fa-id-card fa-3x"></i> <br> <br>
                     <span id="name-icon">PROJETOS ADMIN</span>
                   </button>
-                </a>    
+                </a>
               </div>
               <div class=col-md-3>
                 <a href="{{ url('/painel/configuracoes') }}">
                   <button type="button" id="btn-icon" class="btn btn-primary">
                     <i class="fa fa-cogs fa-3x"></i> <br> <br>
                     <span id="name-icon">CONFIGURAÇÕES</span>
-                  </button>                    
-                </a>    
+                  </button>
+                </a>
               </div>
               @endif
               <div class="col-md-3 estatisticas">
